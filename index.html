@@ -11,10 +11,10 @@
             color: white; /* Chữ trắng mặc định */
             margin: 0;
             padding: 20px;
-            overflow-x: hidden; /* Tránh hiện thanh cuộn ngang khi chữ chạy */
+            overflow-x: hidden; 
         }
 
-        /* 1. HIỆU ỨNG TIÊU ĐỀ CHÍNH: Đổi màu và co giãn */
+        /* HIỆU ỨNG TIÊU ĐỀ CHÍNH: Đổi màu và co giãn */
         h1 {
             text-align: center;
             font-size: 2em;
@@ -34,16 +34,38 @@
             50% { transform: scale(1.05); }
         }
 
+        /* KHUNG CHỨA ĐỔI MÀU VÔ HẠN (Ứng dụng hiệu ứng borderGlow) */
         .box {
             background: #000000; 
-            border: 2px solid #ffffff; /* Viền khung màu trắng */
+            border: 2px solid #ffffff; 
             border-radius: 12px;
             padding: 18px;
             margin: 18px 0;
-            overflow: hidden; /* Cắt phần chữ chạy lọt ra ngoài khung */
+            overflow: hidden; 
+            /* Chạy hiệu ứng đổi màu viền và phát sáng trong 6 giây, lặp vô hạn */
+            animation: borderGlow 6s infinite linear; 
         }
 
-        /* 2. HIỆU ỨNG TIÊU ĐỀ GAME: Chữ chạy từ phải sang trái */
+        @keyframes borderGlow {
+            0% {
+                border-color: #ff00ff;
+                box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+            }
+            33% {
+                border-color: #00ffcc;
+                box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+            }
+            66% {
+                border-color: #ffff00;
+                box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
+            }
+            100% {
+                border-color: #ff00ff;
+                box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+            }
+        }
+
+        /* HIỆU ỨNG TIÊU ĐỀ GAME: Chữ chạy */
         .title-wrapper {
             width: 100%;
             overflow: hidden;
@@ -55,7 +77,7 @@
             display: inline-block;
             color: #ffffff; 
             font-size: 1.4em;
-            padding-left: 100%; /* Bắt đầu ngoài rìa phải */
+            padding-left: 100%; 
             animation: marquee 12s infinite linear;
         }
 
@@ -75,7 +97,7 @@
             margin: 12px 0;
         }
 
-        /* 3. HIỆU ỨNG NÚT BẤM TÍM: Phát sáng nhấp nháy */
+        /* HIỆU ỨNG NÚT BẤM TÍM: Phát sáng nhấp nháy */
         .link-btn {
             display: block;
             background: #800080; /* Nền nút màu tím */
