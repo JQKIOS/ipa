@@ -101,37 +101,41 @@
             margin: 12px 0;
         }
 
-        /* HIỆU ỨNG NÚT BẤM TÍM: Phát sáng nhấp nháy */
+        /* HIỆU ỨNG NÚT BẤM MÀU TRẮNG: Phát sáng nhấp nháy */
         .link-btn {
             display: block;
-            background: #800080; /* Nền nút màu tím */
-            color: #ffffff; 
+            background: #ffffff; /* ĐỔI THÀNH NỀN TRẮNG */
+            color: #000000; /* ĐỔI CHỮ THÀNH MÀU ĐEN ĐỂ DỄ NHÌN */
             padding: 13px;
             text-align: center;
             border-radius: 8px;
             margin: 8px 0;
             font-weight: bold;
             text-decoration: none;
-            border: 1px solid #800080;
-            box-shadow: 0 0 5px #800080;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 5px #ffffff;
             animation: glow 1.5s infinite alternate;
         }
 
+        /* Hiệu ứng phát sáng neon trắng/bạc */
         @keyframes glow {
-            0% { box-shadow: 0 0 5px #800080; }
-            100% { box-shadow: 0 0 18px #b300b3, 0 0 8px #ffffff; }
+            0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            100% { box-shadow: 0 0 18px #ffffff, 0 0 8px #ffffff; }
         }
 
+        /* Hiệu ứng khi di chuột vào nút */
         .link-btn:hover {
-            background: #b300b3; 
-            border-color: #b300b3;
+            background: #e6e6e6; /* Màu xám nhẹ khi hover */
+            border-color: #e6e6e6;
             transform: scale(1.02);
             transition: 0.2s;
         }
 
+        /* Nút LẤY KEY FREE (Có viền đứt đoạn) */
         .btn-key {
-            background: #800080; 
-            border: 1px dashed #ffffff; 
+            background: #ffffff; 
+            color: #000000;
+            border: 1px dashed #000000; /* Đổi viền nét đứt sang màu đen để nổi bật trên nền trắng */
         }
     </style>
 </head>
