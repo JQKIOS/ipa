@@ -29,6 +29,7 @@
             animation: rainbowText 4s infinite linear, pulse 2s infinite ease-in-out;
         }
 
+        /* Hiệu ứng đổi màu chữ liên tục */
         @keyframes rainbowText {
             0% { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
             33% { color: #00ffcc; text-shadow: 0 0 10px #00ffcc; }
@@ -104,8 +105,8 @@
         /* HIỆU ỨNG NÚT BẤM MÀU TRẮNG: Phát sáng nhấp nháy */
         .link-btn {
             display: block;
-            background: #ffffff; /* ĐỔI THÀNH NỀN TRẮNG */
-            color: #000000; /* ĐỔI CHỮ THÀNH MÀU ĐEN ĐỂ DỄ NHÌN */
+            background: #ffffff; 
+            color: #000000; 
             padding: 13px;
             text-align: center;
             border-radius: 8px;
@@ -117,25 +118,32 @@
             animation: glow 1.5s infinite alternate;
         }
 
-        /* Hiệu ứng phát sáng neon trắng/bạc */
         @keyframes glow {
             0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
             100% { box-shadow: 0 0 18px #ffffff, 0 0 8px #ffffff; }
         }
 
-        /* Hiệu ứng khi di chuột vào nút */
         .link-btn:hover {
-            background: #e6e6e6; /* Màu xám nhẹ khi hover */
+            background: #e6e6e6; 
             border-color: #e6e6e6;
             transform: scale(1.02);
             transition: 0.2s;
         }
 
-        /* Nút LẤY KEY FREE (Có viền đứt đoạn) */
         .btn-key {
             background: #ffffff; 
             color: #000000;
-            border: 1px dashed #000000; /* Đổi viền nét đứt sang màu đen để nổi bật trên nền trắng */
+            border: 1px dashed #000000; 
+        }
+
+        /* HIỆU ỨNG CHỮ LIÊN HỆ TELE: Đổi màu động cầu vồng + Co giãn */
+        .contact-tele {
+            text-align: center; 
+            margin-top: 50px; 
+            font-size: 1.2em; 
+            font-weight: bold;
+            /* Thêm hiệu ứng rainbowText chạy song song với hiệu ứng pulse co giãn */
+            animation: rainbowText 4s infinite linear, pulse 2s infinite ease-in-out;
         }
     </style>
 </head>
@@ -213,7 +221,8 @@
         <a href="https://traffic68.com/vuot-link/g2zanus" class="link-btn btn-key"> LẤY KEY FREE</a>
     </div>
 
-    <p style="text-align:center; margin-top:50px; color:#ffffff; font-size:1.1em; animation: pulse 2s infinite ease-in-out;">
+    <!-- Dòng chữ đã được thêm class .contact-tele để chạy màu động và đổ bóng neon -->
+    <p class="contact-tele">
         Mua Key VIP Liên Hệ Tele : @JQK_07
     </p>
 
