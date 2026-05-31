@@ -11,24 +11,59 @@
             color: white; /* Chữ trắng mặc định */
             margin: 0;
             padding: 20px;
+            overflow-x: hidden; /* Tránh hiện thanh cuộn ngang khi chữ chạy */
         }
+
+        /* 1. HIỆU ỨNG TIÊU ĐỀ CHÍNH: Đổi màu và co giãn */
         h1 {
             text-align: center;
-            color: #ffffff; 
-            text-shadow: 0 0 10px #ffffff; 
+            font-size: 2em;
+            font-weight: bold;
+            animation: rainbowText 4s infinite linear, pulse 2s infinite ease-in-out;
         }
+
+        @keyframes rainbowText {
+            0% { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+            33% { color: #00ffcc; text-shadow: 0 0 10px #00ffcc; }
+            66% { color: #ffff00; text-shadow: 0 0 10px #ffff00; }
+            100% { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         .box {
             background: #000000; 
             border: 2px solid #ffffff; /* Viền khung màu trắng */
             border-radius: 12px;
             padding: 18px;
             margin: 18px 0;
+            overflow: hidden; /* Cắt phần chữ chạy lọt ra ngoài khung */
         }
-        .title {
-            color: #ffffff; 
-            font-size: 1.4em;
+
+        /* 2. HIỆU ỨNG TIÊU ĐỀ GAME: Chữ chạy từ phải sang trái */
+        .title-wrapper {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
             margin-bottom: 12px;
         }
+
+        .title {
+            display: inline-block;
+            color: #ffffff; 
+            font-size: 1.4em;
+            padding-left: 100%; /* Bắt đầu ngoài rìa phải */
+            animation: marquee 12s infinite linear;
+        }
+
+        @keyframes marquee {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-100%, 0, 0); }
+        }
+
         .key {
             background: #000000; 
             padding: 12px;
@@ -39,10 +74,12 @@
             border: 1px dashed #ffffff; 
             margin: 12px 0;
         }
+
+        /* 3. HIỆU ỨNG NÚT BẤM TÍM: Phát sáng nhấp nháy */
         .link-btn {
             display: block;
-            background: #800080; /* Đổi nền nút chứa link sang MÀU TÍM */
-            color: #ffffff; /* Chữ trên nút màu trắng */
+            background: #800080; /* Nền nút màu tím */
+            color: #ffffff; 
             padding: 13px;
             text-align: center;
             border-radius: 8px;
@@ -50,34 +87,44 @@
             font-weight: bold;
             text-decoration: none;
             border: 1px solid #800080;
+            box-shadow: 0 0 5px #800080;
+            animation: glow 1.5s infinite alternate;
         }
+
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px #800080; }
+            100% { box-shadow: 0 0 18px #b300b3, 0 0 8px #ffffff; }
+        }
+
         .link-btn:hover {
-            background: #b300b3; /* Khi di chuột vào: Đổi sang màu tím sáng hơn */
-            color: #ffffff;
+            background: #b300b3; 
             border-color: #b300b3;
+            transform: scale(1.02);
+            transition: 0.2s;
         }
+
         .btn-key {
-            background: #800080; /* Giữ đồng bộ màu tím cho nút lấy key */
-            border: 1px dashed #ffffff; /* Viền đứt màu trắng để phân biệt với nút tải */
+            background: #800080; 
+            border: 1px dashed #ffffff; 
         }
     </style>
 </head>
 <body>
+
     <h1> HACK & KEY FREE BY JQK </h1>
 
     <div class="box">
-        <p class="title">📂 HACK PUBG 📂</p>
-        
+        <div class="title-wrapper">
+            <span class="title">📂 HACK PUBG MOBILE 📂</span>
+        </div>
         
         <div class="key">DRACULA PRO</div>
         <a href="https://ipas.cc/ttuhk8" class="link-btn"> TẢI DRACULA PRO</a>
         <a href="https://traffic68.com/vuot-link/8evzfdc" class="link-btn btn-key"> LẤY KEY FREE</a>
 
-        
         <div class="key">LUXURY</div>
         <a href="https://ipas.cc/sim8dk" class="link-btn"> TẢI LUXURY PUBG</a>
         <a href="https://traffic68.com/vuot-link/n89wgb7" class="link-btn btn-key"> LẤY KEY FREE</a>
-        
         
         <div class="key">TIMO</div>
         <a href="https://ipa.authtool.app/api/install/6a100bf5c0c6d194eaf3171a" class="link-btn"> TẢI TIMO </a>
@@ -85,40 +132,41 @@
     </div>
 
     <div class="box">
-        <p class="title">📂 HACK LIÊN QUÂN 📂</p>
-        
+        <div class="title-wrapper">
+            <span class="title">📂 HACK LIÊN QUÂN 📂</span>
+        </div>
         
         <div class="key">MENU CHẤP TỐ</div>
-        <a href="https://ipas.cc/nhruih"  class="link-btn"> TẢI MENU CHẤP TỐ</a>
+        <a href="https://ipas.cc/nhruih" class="link-btn"> TẢI MENU CHẤP TỐ</a>
         <a href="https://traffic68.com/vuot-link/dwy2g3p" class="link-btn btn-key"> LẤY KEY FREE</a>
 
-        
         <div class="key">MENU MÚA FLO</div>
         <a href="https://i.authtool.app/ios/69fc9695e95f3e47a84f9347" class="link-btn"> TẢI MENU MÚA FLO</a>
         <a href="https://traffic68.com/vuot-link/dwy2g3p" class="link-btn btn-key"> LẤY KEY FREE</a>
     </div>
 
     <div class="box">
-        <p class="title">📂 HACK CFL 📂</p>
-        
+        <div class="title-wrapper">
+            <span class="title">📂 HACK CFL 📂</span>
+        </div>
         
         <div class="key">ZORO</div>
         <a href="https://i.authtool.app/ios/69f2a33fe95f3e47a8392be5" class="link-btn"> TẢI ZORO</a>
         <a href="https://traffic68.com/vuot-link/f744t46" class="link-btn btn-key"> LẤY KEY FREE</a>
 
-        
         <div class="key">RAVEN</div>
         <a href="https://transfer.it/t/2EYXPPp1lTgR" class="link-btn"> TẢI REVEN</a>
         <a href="https://traffic68.com/vuot-link/x7m9xjt" class="link-btn btn-key"> LẤY KEY FREE</a>
 
-        
         <div class="key">LUXURY</div>
         <a href="https://i.authtool.app/ios/69f2a33fe95f3e47a8392be5" class="link-btn"> TẢI CFL LUXURY</a>
         <a href="https://traffic68.com/vuot-link/sp6nuwv" class="link-btn btn-key"> LẤY KEY FREE</a>
     </div>
 
     <div class="box">
-        <p class="title">📂 HACK 8BALL POLL 📂</p>
+        <div class="title-wrapper">
+            <span class="title">📂 HACK 8BALL POLL 📂</span>
+        </div>
         
         <div class="key">MENU DS GAMING</div>
         <a href="https://ipas.cc/4oe0kp" class="link-btn"> TẢI MENU DS GAMING</a>
@@ -126,14 +174,16 @@
     </div>
 
     <div class="box">
-        <p class="title">📂 HACK DELTA 📂</p>
+        <div class="title-wrapper">
+            <span class="title">📂 HACK DELTA 📂</span>
+        </div>
         
         <div class="key">DELTA VIP</div>
         <a href="https://ipas.cc/w1acn3" class="link-btn"> TẢI DELTA VIP</a>
         <a href="https://traffic68.com/vuot-link/g2zanus" class="link-btn btn-key"> LẤY KEY FREE</a>
     </div>
 
-    <p style="text-align:center; margin-top:50px; color:#ffffff; font-size:1.1em;">
+    <p style="text-align:center; margin-top:50px; color:#ffffff; font-size:1.1em; animation: pulse 2s infinite ease-in-out;">
         Mua Key VIP Liên Hệ Tele : @JQK_07
     </p>
 
