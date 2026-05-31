@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> JQK IOS </title>
     <style>
+        /* Định nghĩa biến góc xoay để làm mượt chuyển động màu */
+        @property --angle {
+            syntax: '<angle>';
+            initial-value: 0deg;
+            inherits: false;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background: #000000; /* Nền đen toàn trang */
@@ -34,35 +41,32 @@
             50% { transform: scale(1.05); }
         }
 
-        /* KHUNG CHỨA ĐỔI MÀU VÔ HẠN (Ứng dụng hiệu ứng borderGlow) */
+        /* KHUNG CHỨA ĐỔI MÀU LIÊN TỤC (Hiệu ứng viền chuyển động) */
         .box {
             background: #000000; 
-            border: 2px solid #ffffff; 
+            border: 3px solid transparent; /* Viền trong suốt để lộ dải màu phía sau */
             border-radius: 12px;
             padding: 18px;
-            margin: 18px 0;
+            margin: 25px 0;
             overflow: hidden; 
-            /* Chạy hiệu ứng đổi màu viền và phát sáng trong 6 giây, lặp vô hạn */
-            animation: borderGlow 6s infinite linear; 
+            
+            /* Tạo viền dải màu chuyển động xoay tròn */
+            border-image: conic-gradient(from var(--angle), #ff00ff, #00ffcc, #ffff00, #ff00ff) 1;
+            animation: rotateAngle 3s infinite linear, boxGlow 3s infinite alternate ease-in-out;
         }
 
-        @keyframes borderGlow {
-            0% {
-                border-color: #ff00ff;
-                box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+        /* Khớp chuyển động xoay góc dải màu */
+        @keyframes rotateAngle {
+            to {
+                --angle: 360deg;
             }
-            33% {
-                border-color: #00ffcc;
-                box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
-            }
-            66% {
-                border-color: #ffff00;
-                box-shadow: 0 0 15px rgba(255, 255, 0, 0.5);
-            }
-            100% {
-                border-color: #ff00ff;
-                box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
-            }
+        }
+
+        /* Tạo hiệu ứng bóng neon lan tỏa đổi màu nhẹ theo khung */
+        @keyframes boxGlow {
+            0% { box-shadow: 0 0 15px rgba(255, 0, 255, 0.3); }
+            50% { box-shadow: 0 0 15px rgba(0, 255, 204, 0.3); }
+            100% { box-shadow: 0 0 15px rgba(255, 255, 0, 0.3); }
         }
 
         /* HIỆU ỨNG TIÊU ĐỀ GAME: Chữ chạy */
