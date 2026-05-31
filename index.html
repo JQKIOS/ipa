@@ -118,23 +118,21 @@
             margin: 12px 0;
         }
 
-        /* ================= CẬP NHẬT: NÚT BẤM NHIỀU MÀU ================= */
+        /* NÚT BẤM NHIỀU MÀU (NÚT TẢI) */
         .link-btn {
             display: block;
-            /* Tạo nền nhiều màu (Gradient) */
             background: linear-gradient(45deg, #ff00ff, #00ffcc, #ffff00, #ff00ff);
             background-size: 300% 300%;
-            color: #ffffff; /* Đổi chữ sang màu trắng cho dễ nhìn */
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Thêm bóng chữ để dễ đọc trên nền màu */
+            color: #ffffff; 
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); 
             padding: 13px;
             text-align: center;
             border-radius: 8px;
             margin: 8px 0;
             font-weight: bold;
             text-decoration: none;
-            border: none; /* Bỏ viền thô cứng */
+            border: none; 
             box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
-            /* Thêm hiệu ứng dịch chuyển dải màu (gradientMove) */
             animation: glow 1.5s infinite alternate, gradientMove 4s infinite linear;
         }
 
@@ -156,23 +154,24 @@
             transition: 0.2s;
         }
 
-        /* Nút LẤY KEY FREE: Tạo kiểu viền đứt nhiều màu khác biệt một chút */
+        /* ================= CẬP NHẬT: NÚT LẤY KEY FREE NHIỀU MÀU ================= */
         .btn-key {
-            background: transparent;
-            border: 2px dashed #00ffcc;
-            color: #00ffcc;
-            text-shadow: none;
-            box-shadow: none;
-            animation: pulse 2s infinite ease-in-out;
+            /* Thay đổi thành dải màu Gradient Neon nổi bật khác với nút tải */
+            background: linear-gradient(45deg, #00ffff, #ff00ff, #ffff00, #00ffcc);
+            background-size: 300% 300%;
+            color: #ffffff;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9);
+            border: none;
+            box-shadow: 0 0 12px rgba(255, 0, 255, 0.6);
+            /* Kết hợp hiệu ứng chạy màu liên tục */
+            animation: gradientMove 3s infinite linear, pulse 2s infinite ease-in-out;
         }
         
         .btn-key:hover {
-            background: linear-gradient(45deg, #00ffcc, #ffff00);
-            color: #000;
-            border-color: transparent;
-            filter: none;
+            filter: brightness(1.3) contrast(1.1);
+            transform: scale(1.03);
         }
-        /* =============================================================== */
+        /* ======================================================================= */
 
         /* HIỆU ỨNG CHỮ LIÊN HỆ TELE: Đổi màu động cầu vồng + Co giãn */
         .contact-tele {
@@ -182,7 +181,6 @@
             font-weight: bold;
             position: relative;
             z-index: 1;
-            /* Thêm hiệu ứng rainbowText chạy song song với hiệu ứng pulse co giãn */
             animation: rainbowText 4s infinite linear, pulse 2s infinite ease-in-out;
         }
     </style>
