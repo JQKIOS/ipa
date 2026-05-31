@@ -118,39 +118,61 @@
             margin: 12px 0;
         }
 
-        /* HIỆU ỨNG NÚT BẤM MÀU TRẮNG: Phát sáng nhấp nháy */
+        /* ================= CẬP NHẬT: NÚT BẤM NHIỀU MÀU ================= */
         .link-btn {
             display: block;
-            background: #ffffff; 
-            color: #000000; 
+            /* Tạo nền nhiều màu (Gradient) */
+            background: linear-gradient(45deg, #ff00ff, #00ffcc, #ffff00, #ff00ff);
+            background-size: 300% 300%;
+            color: #ffffff; /* Đổi chữ sang màu trắng cho dễ nhìn */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Thêm bóng chữ để dễ đọc trên nền màu */
             padding: 13px;
             text-align: center;
             border-radius: 8px;
             margin: 8px 0;
             font-weight: bold;
             text-decoration: none;
-            border: 1px solid #ffffff;
-            box-shadow: 0 0 5px #ffffff;
-            animation: glow 1.5s infinite alternate;
+            border: none; /* Bỏ viền thô cứng */
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+            /* Thêm hiệu ứng dịch chuyển dải màu (gradientMove) */
+            animation: glow 1.5s infinite alternate, gradientMove 4s infinite linear;
+        }
+
+        /* Hiệu ứng làm dải màu trên nút tự động chạy qua chạy lại */
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         @keyframes glow {
-            0% { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
-            100% { box-shadow: 0 0 18px #ffffff, 0 0 8px #ffffff; }
+            0% { box-shadow: 0 0 5px rgba(255, 0, 255, 0.5); }
+            100% { box-shadow: 0 0 15px rgba(0, 255, 204, 0.8), 0 0 5px rgba(255, 255, 0, 0.5); }
         }
 
         .link-btn:hover {
-            background: #e6e6e6; 
-            border-color: #e6e6e6;
+            filter: brightness(1.2); /* Làm nút sáng rực lên khi di chuột vào */
             transform: scale(1.02);
             transition: 0.2s;
         }
 
+        /* Nút LẤY KEY FREE: Tạo kiểu viền đứt nhiều màu khác biệt một chút */
         .btn-key {
-            background: #ffffff; 
-            color: #000000;
-            border: 1px dashed #000000; 
+            background: transparent;
+            border: 2px dashed #00ffcc;
+            color: #00ffcc;
+            text-shadow: none;
+            box-shadow: none;
+            animation: pulse 2s infinite ease-in-out;
         }
+        
+        .btn-key:hover {
+            background: linear-gradient(45deg, #00ffcc, #ffff00);
+            color: #000;
+            border-color: transparent;
+            filter: none;
+        }
+        /* =============================================================== */
 
         /* HIỆU ỨNG CHỮ LIÊN HỆ TELE: Đổi màu động cầu vồng + Co giãn */
         .contact-tele {
@@ -254,7 +276,6 @@
         const canvas = document.getElementById('snow-canvas');
         const ctx = canvas.getContext('2d');
 
-        // Tự động căn chỉnh kích thước canvas theo màn hình
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
@@ -262,8 +283,10 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        // Tạo mảng chứa các hạt tuyết
-        const numFlakes = 80; // Số lượng bông tuyết rơi cùng lúc
+        // Danh sách các tông màu Neon khớp với viền hộp (Hồng, Xanh lục bảo, Vàng, Xanh dương...)
+        const neonColors = ['#ff00ff', '#00ffcc', '#ffff00', '#00ffff', '#ff3366'];
+
+        const numFlakes = 80; 
         const flakes = [];
 
         for (let i = 0; i < numFlakes; i++) {
@@ -271,47 +294,54 @@
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 r: Math.random() * 3 + 1, // Kích thước hạt từ 1px đến 4px
-                d: Math.random() * numFlakes, // Độ trễ chuyển động lắc lư
-                speed: Math.random() * 1 + 0.5 // Tốc độ rơi rơi vừa phải
+                d: Math.random() * numFlakes,
+                speed: Math.random() * 1 + 0.5,
+                color: neonColors[Math.floor(Math.random() * neonColors.length)] // Gán ngẫu nhiên 1 màu neon cho hạt
             });
         }
 
-        // Vẽ và cập nhật vị trí hạt tuyết rơi
         function drawSnow() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "rgba(255, 255, 255, 0.75)"; // Màu tuyết trắng đục nhẹ
-            ctx.beginPath();
 
+            // Vẽ riêng từng hạt để đảm bảo giữ nguyên màu sắc đa dạng
             for (let i = 0; i < numFlakes; i++) {
                 const f = flakes[i];
-                ctx.moveTo(f.x, f.y);
+                ctx.beginPath();
                 ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+                
+                // Tạo hiệu ứng phát sáng nhẹ (Glow) quanh hạt tuyết sắc màu
+                ctx.shadowBlur = 4;
+                ctx.shadowColor = f.color;
+                
+                ctx.fillStyle = f.color;
+                ctx.fill();
             }
-            ctx.fill();
+            
+            // Reset bóng mờ để không làm ảnh hưởng hiệu năng render tổng thể
+            ctx.shadowBlur = 0;
+            
             moveSnow();
         }
 
-        // Xử lý chuyển động của tuyết rơi tự nhiên rơi từ trên xuống và lắc lư sang 2 bên
         function moveSnow() {
             for (let i = 0; i < numFlakes; i++) {
                 const f = flakes[i];
-                f.y += f.speed; // Rơi xuống
-                f.x += Math.sin(f.y / 30) * 0.5; // Lắc lư trái phải tự nhiên
+                f.y += f.speed; 
+                f.x += Math.sin(f.y / 30) * 0.5; 
 
-                // Nếu chạm đáy màn hình thì reset hạt tuyết quay lại đỉnh đầu
                 if (f.y > canvas.height) {
                     flakes[i] = {
                         x: Math.random() * canvas.width,
                         y: 0,
                         r: f.r,
                         d: f.d,
-                        speed: f.speed
+                        speed: f.speed,
+                        color: neonColors[Math.floor(Math.random() * neonColors.length)] // Đổi màu mới khi reset hạt lên đỉnh đầu
                     };
                 }
             }
         }
 
-        // Chạy vòng lặp hiệu ứng mượt mà
         function update() {
             drawSnow();
             requestAnimationFrame(update);
