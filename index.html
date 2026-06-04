@@ -7,10 +7,10 @@
     <style>
         :root {
             --bg-color: #0b0c10; /* Giữ nền website màu đen tối như cũ */
-            --card-bg: #ffffff;  /* CHỈ ĐỔI NỀN KHUNG THÀNH MÀU TRẮNG */
+            --card-bg: rgba(255, 255, 255, 0.06);  /* ĐỔI THÀNH TRONG SUỐT dạng kính */
             --text-color: #c5a059; /* Màu vàng Gold sang trọng cho tiêu đề */
             --text-light: #ffffff; /* Màu chữ ngoài nền tối */
-            --accent-green: #01985a; /* Màu trạng thái xanh đậm để nổi bật trên khung trắng */
+            --accent-green: #00ff9d; /* Đổi sang màu xanh sáng để nổi bật trên nền tối */
             --btn-download: linear-gradient(135deg, #007bff, #00d2ff);
             --btn-key: linear-gradient(135deg, #ff007f, #ff7b00);
         }
@@ -86,46 +86,60 @@
             gap: 20px;
         }
 
-        /* Thẻ sản phẩm (Card Shop màu trắng) */
+        /* Thẻ sản phẩm (Card Shop TRONG SUỐT) */
         .product-card {
             background: var(--card-bg);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px); /* Hiệu ứng mờ kính phía sau */
+            -webkit-backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             position: relative;
             overflow: hidden;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            border-color: rgba(197, 160, 89, 0.5);
-            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2);
+            border-color: rgba(197, 160, 89, 0.6);
+            box-shadow: 0 15px 30px rgba(197, 160, 89, 0.25);
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Tên sản phẩm đổi sang màu tối để nổi bật trên khung trắng */
+        /* Tên sản phẩm đổi sang màu trắng để nổi bật trên khung trong suốt */
         .product-name {
             font-size: 1.25em;
             font-weight: bold;
             margin: 0 0 10px 0;
-            color: #1f2833;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         /* Nhãn trạng thái (Status tag) */
         .product-status {
             display: inline-block;
             font-size: 0.75em;
-            padding: 3px 8px;
+            padding: 4px 8px;
             border-radius: 5px;
-            background: rgba(1, 152, 90, 0.1);
+            background: rgba(0, 255, 157, 0.15);
             color: var(--accent-green);
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             align-self: flex-start;
+        }
+
+        /* CSS cho Banner hình ảnh bên trong card */
+        .banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto 15px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
         }
 
         /* Khu vực nút bấm trong thẻ */
@@ -133,6 +147,7 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+            margin-top: auto; /* Đẩy cụm nút xuống dưới cùng card */
         }
 
         .btn {
@@ -211,20 +226,8 @@
                     <div class="product-status">● Đang hoạt động</div>
                 </div>
                 <div class="banner">
-    <img src="https://i.postimg.cc/MHMj4DL9/IMG-0442.jpg" alt="Banner">
-</div>
-
-<style>
-.banner img{
-    width:100%;
-    max-width:1200px;
-    height:auto;
-    display:block;
-    margin:auto;
-    border-radius:10px;
-}
-</style>
-<div class="product-status"> </div>
+                    <img src="https://i.postimg.cc/MHMj4DL9/IMG-0442.jpg" alt="Banner">
+                </div>
                 <div class="card-actions">
                     <a href="itms-services://?action=download-manifest&url=https%3A%2F%2Ffvfzxzyecxkowpxakgew.supabase.co%2Ffunctions%2Fv1%2Fplist-manifest%3Fapp_id%3D591e67dc-3ef1-4a41-b2e6-0461b84f12d7" class="btn btn-download">TẢI HACK</a>
                     <a href="https://traffic68.com/vuot-link/h9i7rcj" class="btn btn-key">LẤY KEY</a>
@@ -372,8 +375,6 @@
                 </div>
             </div>
             
-            </div>
-
         </div>
     </div>
 
@@ -427,7 +428,6 @@
                 </div>
             </div>
 
-
         </div>
     </div>
 
@@ -462,7 +462,6 @@
                     <a href="https://transfer.it/t/u9xAbS5nXLhI" class="btn btn-download">TẢI HACK</a>
                     <a href="https://traffic68.com/vuot-link/a9n7rvg" class="btn btn-key">LẤY KEY</a>
                 </div>
-                
             </div>
 
         </div>
@@ -516,7 +515,7 @@
     </div>
     
     <div class="category-section">
-        <div class="category-title">📂HACK TỐC CHIẾN </div>
+        <div class="category-title">📂 HACK TỐC CHIẾN </div>
         <div class="products-grid">
             
             <div class="product-card">
@@ -534,7 +533,7 @@
     </div>
 
   <div class="category-section">
-        <div class="category-title">📂HACK CAll OF DUTY</div>
+        <div class="category-title">📂 HACK CAll OF DUTY</div>
         <div class="products-grid">
             
             <div class="product-card">
