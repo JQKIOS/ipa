@@ -1,414 +1,53 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FANG HAKI - Kho ứng dụng</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
-
-        body {
-            background-color: #ffffff;
-            color: #333;
-            line-height: 1.5;
-        }
-
-        /* === POPUP THÔNG BÁO === */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            padding: 16px;
-        }
-
-        .modal-box {
-            background: #fff;
-            width: 100%;
-            max-width: 480px;
-            border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            animation: fadeIn 0.25s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .modal-header h2 {
-            font-size: 20px;
-            font-weight: 700;
-        }
-
-        .close-x {
-            font-size: 22px;
-            color: #007AFF;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .modal-content {
-            font-size: 16px;
-            line-height: 1.8;
-            margin-bottom: 24px;
-        }
-
-        .modal-content a {
-            color: #007AFF;
-            text-decoration: underline;
-            font-weight: 500;
-        }
-
-        .modal-footer {
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-        }
-
-        .modal-btn {
-            padding: 8px 16px;
-            border-radius: 8px;
-            border: 1px solid #d1d1d6;
-            background: #f5f5f7;
-            font-size: 15px;
-            cursor: pointer;
-        }
-
-        .modal-btn.primary {
-            background: #007AFF;
-            color: white;
-            border-color: #007AFF;
-        }
-        /* === KẾT THÚC POPUP === */
-
-        /* Phần đầu trang */
-        .app-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 20px 16px;
-            background: #fff;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .app-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            overflow: hidden;
-            flex-shrink: 0;
-            background: #222;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-        }
-
-        .app-info h1 {
-            font-size: 20px;
-            font-weight: 600;
-        }
-
-        .app-info p {
-            font-size: 14px;
-            color: #888;
-        }
-
-        .container {
-            padding: 16px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .category {
-            margin-bottom: 24px;
-            border-radius: 12px;
-            overflow: hidden;
-            background: #f8f9fc;
-        }
-
-        .category-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 16px;
-            background: #f0f2fa;
-        }
-
-        .category-header h2 {
-            font-size: 18px;
-            font-weight: 600;
-            color: #6366f1;
-        }
-
-        .count {
-            font-size: 14px;
-            color: #888;
-        }
-
-        .app-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 14px 16px;
-            background: #ffffff;
-            border-bottom: 1px solid #f0f0f0;
-            text-decoration: none;
-            color: inherit;
-            transition: background 0.2s;
-        }
-
-        .app-item:hover {
-            background: #f9fafc;
-        }
-
-        .app-item:last-child {
-            border-bottom: none;
-        }
-
-        .app-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .app-logo {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: #eee;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .app-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .app-text h3 {
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .app-text p {
-            font-size: 13px;
-            color: #888;
-        }
-
-        .arrow {
-            color: #ccc;
-            font-size: 18px;
-        }
-    </style>
-</head>
-<body>
-
-<!-- === POPUP THÔNG BÁO === -->
-<div class="modal-overlay" id="noticeModal">
-    <div class="modal-box">
-        <div class="modal-header">
-            <h2>THÔNG BÁO</h2>
-            <button class="close-x" onclick="closeModal()">&times;</button>
-        </div>
-        <div class="modal-content">
-            Nội dung thông báo ở đây...<br><br>
-            😊 <strong>CHÀO MỪNG AE ĐẾN FANG HAKI</strong><br>
-            HACK FREE IOS - ANDROID<br>
-            TỰA GAME - PUBG - CFM - FREE FIRE - LIÊN QUÂN ,...<br><br>
-            LIÊN HỆ ADMIN : <a href="https://t.me/FangLxr" target="_blank">BẤM VÀO ĐÂY</a><br>
-            WEP CHỨNG CHỈ ESIG ; <a href="https://khoindvn.io.vn" target="_blank">BẤM VÀO ĐÂY</a><br>
-            LINK KÊNH TELEGRAM : <a href="https://t.me/FANGPUBGVN" target="_blank">BẤM VÀO ĐÂY</a><br>
-            NHÓM CHÁT TELEGRAM: <a href="https://t.me/FANGHAKICHAT" target="_blank">BẤM VÀO ĐÂY</a><br>
-            KÊNH YOUTUBE : <a href="https://youtube.com/@fanghaki?si=Cx0BIt43TslWaOI-" target="_blank">BẤM VÀO ĐÂY</a>
-            KÊNH TIK TOK : <a href="https://www.tiktok.com/@fanglxr?_r=1&_t=ZS-97rTlNFueSP" target="_blank">BẤM VÀO ĐÂY</a>
-        </div>
-        <div class="modal-footer">
-            <button class="modal-btn" onclick="hideOneHour()">Ẩn 1 giờ</button>
-            <button class="modal-btn primary" onclick="closeModal()">Đóng</button>
-        </div>
+<!-- === FOOTER === -->
+<footer class="xumod-footer">
+    <div class="footer-left">
+        <h3>© 2026 XUMOD</h3>
+        <p>All rights reserved.</p>
     </div>
-</div>
-<!-- === KẾT THÚC THÔNG BÁO === -->
-
-<!-- === TRANG CHÍNH === -->
-<div class="app-header">
-    <div class="app-icon">🥷</div>
-    <div class="app-info">
-        <h1>FANG HAKI</h1>
-        <p>Kho Hack Game & Key Free</p>
+    <div class="footer-right">
+        <a href="#" class="footer-link">Telegram</a>
+        <a href="#" class="footer-link">Admin</a>
     </div>
-</div>
+</footer>
 
-<div class="container">
-
-    <!-- Nhóm PUBG IOS -->
-    <div class="category">
-        <div class="category-header">
-            <h2>HACK PUBG IOS</h2>
-            <span class="count">2 ứng dụng</span>
-        </div>
-        <a href="pubg-dracula-pro.html" class="app-item">
-            <div class="app-left">
-                <div class="app-logo">
-                    <img src="https://i.postimg.cc/xjX3X9G5/IMG-1953.jpg" alt="DRACULA PRO" loading="lazy">
-                </div>
-                <div class="app-text">
-                    <h3>DRACULA PRO</h3>
-                    <p></p>
-                </div>
-            </div>
-            <span class="arrow">›</span>
-        </a>
-        <a href="pubg-luxury.html" class="app-item">
-            <div class="app-left">
-                <div class="app-logo">
-                    <img src="https://i.postimg.cc/xjX3X9G5/IMG-1953.jpg" alt="LUXURY" loading="lazy">
-                </div>
-                <div class="app-text">
-                    <h3>LUXURY</h3>
-                    <p></p>
-                </div>
-            </div>
-            <span class="arrow">›</span>
-        </a>
-    </div>
-
-    <!-- Nhóm Liên Quân IOS -->
-    <div class="category">
-        <div class="category-header">
-            <h2>HACK LIÊN QUÂN IOS</h2>
-            <span class="count">3 ứng dụng</span>
-        </div>
-        <a href="lienquan-luxury.html" class="app-item">
-            <div class="app-left">
-                <div class="app-logo">
-                    <img src="https://i.postimg.cc/nzhKnJTC/IMG-1954.jpg" alt="LUXURY" loading="lazy">
-                </div>
-                <div class="app-text">
-                    <h3>LUXURY</h3>
-                    <p></p>
-                </div>
-            </div>
-            <span class="arrow">›</span>
-        </a>
-        <a href="lienquan-cheataov.html" class="app-item">
-            <div class="app-left">
-                <div class="app-logo">
-                    <img src="https://i.postimg.cc/nzhKnJTC/IMG-1954.jpg" alt="CHEAT AOV" loading="lazy">
-                </div>
-                <div class="app-text">
-                    <h3>CHEAT AOV</h3>
-                    <p></p>
-                </div>
-            </div>
-            <span class="arrow">›</span>
-        </a>
-        <a href="lienquan-chap-to-esp.html" class="app-item">
-            <div class="app-left">
-                <div class="app-logo">
-                    <img src="https://i.postimg.cc/nzhKnJTC/IMG-1954.jpg" alt="CHẤP TỐ ESP" loading="lazy">
-                </div>
-                <div class="app-text">
-                    <h3>CHẤP TỐ ESP</h3>
-                    <p></p>
-                </div>
-            </div>
-            <span class="arrow">›</span>
-        </a>
-    </div>
-
-    <!-- Nhóm CFL IOS -->
-    <div class="category">
-        <div class="category-header">
-            <h2>HACK CFL IOS</h2>
-            <span class="count">3 ứng dụng</span>
-        </div>
-        <a href="cfl-zoro.html" class="app-item">
-            <div class="app-left">
-                <div class="app-logo">
-                    <img src="https://i.postimg.cc/FK5dPQ25/IMG-1955.jpg" alt="ZORO" loading="lazy">
-                </div>
-                <div class="app-text">
-                    <h3>ZORO</h3>
-                    <p></p>
-                </div>
-            </div>
-            <span class="arrow">›</span>
-        </a>
-        <a href="cfl-raven.html" class="app-item">
-            <div class="app-left">
-                <div class="app-logo">
-                    <img src="https://i.postimg.cc/FK5dPQ25/IMG-1955.jpg" alt="RAVEN" loading="lazy">
-                </div>
-                <div class="app-text">
-                    <h3>RAVEN</h3>
-                    <p></p>
-                </div>
-            </div>
-            <span class="arrow">›</span>
-        </a>
-        <a href="cfl-luxury.html" class="app-item">
-            <div class="app-left">
-                <div class="app-logo">
-                    <img src="https://i.postimg.cc/FK5dPQ25/IMG-1955.jpg" alt="LUXURY" loading="lazy">
-                </div>
-                <div class="app-text">
-                    <h3>LUXURY</h3>
-                    <p></p>
-                </div>
-            </div>
-            <span class="arrow">›</span>
-        </a>
-    </div>
-
-</div>
-
-<!-- === JAVASCRIPT ĐIỀU KHIỂN THÔNG BÁO === -->
-<script>
-const modal = document.getElementById("noticeModal");
-
-// Kiểm tra nếu đã chọn ẩn 1 giờ trước
-if (localStorage.getItem("hideNoticeUntil") && Date.now() < parseInt(localStorage.getItem("hideNoticeUntil"))) {
-    modal.style.display = "none";
+<!-- === CSS === -->
+<style>
+.xumod-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 24px 16px;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    max-width: 100%;
 }
 
-function closeModal() {
-    modal.style.display = "none";
+.footer-left h3 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 6px 0;
 }
 
-function hideOneHour() {
-    const oneHour = 60 * 60 * 1000; // 1 giờ tính bằng mili giây
-    localStorage.setItem("hideNoticeUntil", Date.now() + oneHour);
-    modal.style.display = "none";
+.footer-left p {
+    font-size: 16px;
+    color: #6b7280;
+    margin: 0;
 }
-</script>
 
-</body>
-</html>
+.footer-right {
+    display: flex;
+    gap: 24px;
+}
+
+.footer-link {
+    font-size: 20px;
+    color: #6b7280;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-link:hover {
+    color: #111827;
+}
+</style>
