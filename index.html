@@ -6,42 +6,45 @@
     <title>FANG HAKI</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif}
-        body{line-height:1.4}
+        body{color:#fff;line-height:1.4}
+
+        /* ========== MÀU NỀN CHUNG ========== */
+        .phan-1, .phan-2, .phan-3{background-color:#000000}
 
         /* ========== PHẦN 1 - TRANG ĐẦU ========== */
-        .phan-1{min-height:100vh;padding:24px 20px;background:linear-gradient(180deg,#f5f7fa 0%,#e9ecef 100%);position:relative}
-        .thoi-gian{display:inline-flex;align-items:center;gap:6px;background:#fff;border:2px solid #ffb74d;padding:10px 22px;border-radius:30px;font-size:18px;font-weight:500;color:#333;box-shadow:0 2px 6px rgba(255,152,0,0.1)}
-        .menu-btn{position:absolute;top:24px;right:20px;width:48px;height:48px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+        .phan-1{min-height:100vh;padding:24px 20px;position:relative}
+        .thoi-gian{display:inline-flex;align-items:center;gap:6px;background:#111;border:2px solid #ffb74d;padding:10px 22px;border-radius:30px;font-size:18px;font-weight:500;color:#fff;box-shadow:0 2px 6px rgba(255,152,0,0.2)}
+        .menu-btn{position:absolute;top:24px;right:20px;width:48px;height:48px;background:#111;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;box-shadow:0 2px 8px rgba(255,255,255,0.05)}
         .avatar-khung{text-align:center;margin-top:80px;margin-bottom:24px}
-        .avatar{width:140px;height:140px;border-radius:50%;border:3px solid #c9cdd4;background:#ddd;display:inline-flex;align-items:center;justify-content:center;font-size:70px;color:#777}
-        .ten-nho{display:inline-block;background:#dee2e6;padding:8px 24px;border-radius:20px;font-size:17px;color:#495057;margin-bottom:16px}
-        .chao-txt{text-align:center;font-size:22px;color:#495057;margin-bottom:8px}
+        .avatar{width:140px;height:140px;border-radius:50%;border:3px solid #333;object-fit:cover;background:#222}
+        .ten-nho{display:inline-block;background:#222;padding:8px 24px;border-radius:20px;font-size:17px;color:#aaa;margin-bottom:16px}
+        .chao-txt{text-align:center;font-size:22px;color:#888;margin-bottom:8px}
         .ten-lon{text-align:center;font-size:44px;font-weight:800;margin-bottom:12px}
         .dau-tich-xanh{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:#3b82f6;border-radius:50%;color:#fff;font-size:20px;margin-left:8px;vertical-align:middle}
-        .huong-dan-txt{text-align:center;font-size:24px;color:#6c757d;margin-bottom:45px}
-        .thong-ke-khung{display:flex;justify-content:space-around;align-items:center;gap:10px;background:#fff;padding:28px 20px;border-radius:24px;max-width:500px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,0.04)}
+        .huong-dan-txt{text-align:center;font-size:24px;color:#666;margin-bottom:45px}
+        .thong-ke-khung{display:flex;justify-content:space-around;align-items:center;gap:10px;background:#111;padding:28px 20px;border-radius:24px;max-width:500px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,0.2)}
         .cot-tk{text-align:center;flex:1}
-        .so-tk{font-size:42px;font-weight:700;color:#ced4da;margin-bottom:6px}
-        .chu-tk{font-size:18px;color:#495057}
-        .ngang-ke{width:1px;height:40px;background:#e9ecef}
+        .so-tk{font-size:42px;font-weight:700;color:#666;margin-bottom:6px}
+        .chu-tk{font-size:18px;color:#888}
+        .ngang-ke{width:1px;height:40px;background:#222}
 
         /* ========== PHẦN 2 - SẢN PHẨM ========== */
-        .phan-2{background:#000;padding:40px 20px}
+        .phan-2{padding:40px 20px}
         .tieu-de-phan2{font-size:34px;font-weight:800;margin-bottom:24px;background:linear-gradient(90deg,#ff4081,#00e5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
         .khung-sp{background:#111;border-radius:22px;padding:18px;border:1px solid #222;max-width:500px;margin:0 auto}
-        .anh-sp-khung{width:100%;height:240px;border-radius:14px;margin-bottom:20px;background:#222;display:flex;align-items:center;justify-content:center;color:#888;font-size:20px;gap:8px}
+        .anh-sp-khung{width:100%;height:240px;border-radius:14px;margin-bottom:20px;background:#222;overflow:hidden}
+        .anh-sp-khung img{width:100%;height:100%;object-fit:cover;border-radius:14px}
         .nhan-capnhat{display:inline-flex;align-items:center;gap:8px;background:#15803d;color:#fff;padding:10px 22px;border-radius:30px;font-size:17px;margin-bottom:16px}
         .ten-sp{font-size:26px;font-weight:bold;margin-bottom:12px;color:#fff}
         .mo-ta-sp{color:#aaa;margin-bottom:24px;font-size:18px;line-height:1.6}
         .nut-group{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:center}
-        .nut-group.ba-nut{grid-template-columns:1fr 1fr 1fr}
         .nut-sp{padding:18px 10px;border-radius:16px;text-align:center;text-decoration:none;color:#fff;font-weight:bold;font-size:20px;border:none;cursor:pointer;white-space:nowrap}
         .nut-xanh{background:linear-gradient(135deg,#2196f3,#42a5f5)}
         .nut-vang{background:linear-gradient(135deg,#ffc107,#ffca28);color:#111}
         .nut-hong{background:linear-gradient(135deg,#ec407a,#d81b60)}
 
         /* ========== PHẦN 3 - CHÂN TRANG ========== */
-        .phan-3{background:#000;padding:50px 20px 40px;text-align:center;border-top:1px solid #222;max-width:100%}
+        .phan-3{padding:50px 20px 40px;text-align:center;border-top:1px solid #222}
         .ten-chan{font-size:48px;font-weight:800;background:linear-gradient(90deg,#81ff81,#00e5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
         .mo-ta-chan{font-size:24px;color:#888;margin-bottom:16px}
         .tieuchi-chan{font-size:32px;font-weight:bold;margin-bottom:32px;letter-spacing:1px;background:linear-gradient(90deg,#d4ff33,#76ff03);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
@@ -50,49 +53,27 @@
         .ban-quyen{font-size:22px;color:#666}
         .nut-len-top{display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:#27272a;border-radius:8px;color:#fff;font-size:24px;text-decoration:none;margin-top:20px;margin-left:auto}
 
-        /* ========== HỘP THÔNG BÁO LẤY KEY ========== */
-        .hop-popup{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:999}
-        .hop-popup.hien{display:flex}
-        .hop-noi-dung{background:#181822;border-radius:18px;padding:30px 24px;width:90%;max-width:400px;border:2px solid #a855f7;text-align:center}
-        .hop-tieude{font-size:30px;font-weight:800;margin-bottom:8px;color:#fff}
-        .hop-loai{color:#22d369;font-size:22px;font-weight:bold;margin-bottom:20px}
-        .hop-noidung{font-size:18px;line-height:1.8;color:#ddd}
-        .hop-nut{display:flex;flex-direction:column;gap:14px;margin-top:25px}
-        .btn-hop{padding:15px;border-radius:12px;border:none;font-size:19px;font-weight:bold;cursor:pointer}
-        .btn-xanh{background:linear-gradient(90deg,#3b9eff,#40a9ff);color:#fff}
-        .btn-xam{background:#444654;color:#bbb}
+        /* ========== NHẠC NỀN ========== */
+        #nhacNen{display:none}
     </style>
 </head>
 <body>
 
-<!-- Hộp thông báo lấy key -->
-<div class="hop-popup" id="hopBao">
-    <div class="hop-noi-dung">
-        <h2 class="hop-tieude">THÔNG BÁO</h2>
-        <div class="hop-loai">LẤY KEY</div>
-        <div class="hop-noidung">
-            Key Free 24h<br><br>
-            Hết Key Cứ Quay Lại Web Lấy
-        </div>
-        <div class="hop-nut">
-            <button class="btn-hop btn-xanh" id="nutTiep">TIẾP TỤC</button>
-            <button class="btn-hop btn-xam" onclick="dongHop()">Hủy</button>
-        </div>
-    </div>
-</div>
+<!-- NHẠC NỀN TỰ ĐỘNG PHÁT -->
+<audio id="nhacNen" autoplay loop preload="auto" volume="0.5">
+    <source src="https://files.catbox.moe/9aa2yc.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
 
 
-<!-- ======================================
-            PHẦN 1 - TRANG ĐẦU
-====================================== -->
+<!-- ====================================== PHẦN 1 ====================================== -->
 <section class="phan-1">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;">
-        <div class="thoi-gian">13:53:46 ☀️</div>
+        <div class="thoi-gian"><span id="dongHo">00:00:00</span> ☀️</div>
         <div class="menu-btn">☰</div>
     </div>
 
     <div class="avatar-khung">
-        <div class="avatar">👤</div>
+        <img src="https://i.postimg.cc/LXY4m0GD/D33D3E2D-A694-43C5-A5FD-F83CA31D2F5D.jpg" class="avatar" alt="FANG HAKI">
     </div>
 
     <div style="text-align:center;">
@@ -120,39 +101,37 @@
     </div>
 </section>
 
-<!-- ======================================
-            PHẦN 2 - SẢN PHẨM
-====================================== -->
+<!-- ====================================== PHẦN 2 ====================================== -->
 <section class="phan-2">
     <h2 class="tieu-de-phan2">HACK PUBG iOS</h2>
 
     <div class="khung-sp">
-        <div class="anh-sp-khung">🖼️ Ảnh giao diện</div>
+        <div class="anh-sp-khung">
+            <img src="https://i.postimg.cc/LXY4m0GD/D33D3E2D-A694-43C5-A5FD-F83CA31D2F5D.jpg" alt="Giao diện Dracula">
+        </div>
 
         <div class="nhan-capnhat">✅ Đã Cập Nhật</div>
         <h3 class="ten-sp">Hack Dracula Pro 4.5</h3>
         <p class="mo-ta-sp">• Chơi Mod Skin Thì Bật Nhà Phát Triển Lên</p>
 
-        <div class="nut-group ba-nut">
-            <a href="#" class="nut-sp nut-xanh">Link Trực Tiếp</a>
-            <button class="nut-sp nut-vang" onclick="moHop('FH-9922-AA77-BN31')">Lấy Key</button>
-            <a href="#" class="nut-sp nut-hong">Link IPA</a>
+        <div class="nut-group">
+            <a href="LINK_LINK_TAI" class="https://i.postimg.cc/LXY4m0GD/D33D3E2D-A694-43C5-A5FD-F83CA31D2F5D.jpg">Link Trực Tiếp</a>
+            <a href="LINK_LAY_KEY" class="https://i.postimg.cc/LXY4m0GD/D33D3E2D-A694-43C5-A5FD-F83CA31D2F5D.jpg">Lấy Key</a>
+            <a href="https://i.postimg.cc/LXY4m0GD/D33D3E2D-A694-43C5-A5FD-F83CA31D2F5D.jpg" class="nut-sp nut-hong">Link IPA</a>
         </div>
     </div>
 </section>
 
-<!-- ======================================
-            PHẦN 3 - CHÂN TRANG
-====================================== -->
+<!-- ====================================== PHẦN 3 ====================================== -->
 <section class="phan-3">
     <h2 class="ten-chan">FANG HAKI</h2>
     <p class="mo-ta-chan">Kho Game iOS & Android</p>
     <p class="tieuchi-chan">🔥 ViP • Safe • Antiban 🔥</p>
 
     <div class="nut-chan-wrap">
-        <a href="#" class="nut-chan">Telegram</a>
-        <a href="#" class="nut-chan">TikTok</a>
-        <a href="#" class="nut-chan">YouTube</a>
+        <a href="LINK_TELEGRAM" class="nut-chan">Telegram</a>
+        <a href="LINK_TIKTOK" class="nut-chan">TikTok</a>
+        <a href="LINK_YOUTUBE" class="nut-chan">YouTube</a>
     </div>
 
     <p class="ban-quyen">© 2026 FANG HAKI</p>
@@ -161,19 +140,30 @@
 
 
 <script>
-let keyDung = '';
-function moHop(k) {
-    keyDung = k;
-    document.getElementById('hopBao').classList.add('hien');
-    document.getElementById('nutTiep').onclick = function() {
-        dongHop();
-        alert('🔑 Key: ' + keyDung + '\n✅ Đã sao chép!');
-        navigator.clipboard && navigator.clipboard.writeText(keyDung);
+// ========== ĐỒNG HỒ CHẠY ĐÚNG GIỜ THỰC TẾ ==========
+function capNhatGio() {
+    const now = new Date();
+    const gio = String(now.getHours()).padStart(2, '0');
+    const phut = String(now.getMinutes()).padStart(2, '0');
+    const giay = String(now.getSeconds()).padStart(2, '0');
+    document.getElementById('dongHo').textContent = `${gio}:${phut}:${giay}`;
+}
+capNhatGio();
+setInterval(capNhatGio, 1000);
+
+// ========== NHẠC TỰ ĐỘNG PHÁT ==========
+const nhac = document.getElementById('nhacNen');
+document.addEventListener('DOMContentLoaded', function() {
+    nhac.volume = 0.5;
+    function thuPhatNhac() {
+        nhac.play().catch(function() {
+            document.addEventListener('click', function() {
+                nhac.play();
+            }, { once: true });
+        });
     }
-}
-function dongHop() {
-    document.getElementById('hopBao').classList.remove('hien');
-}
+    thuPhatNhac();
+});
 </script>
 
 </body>
