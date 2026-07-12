@@ -52,18 +52,9 @@
         .nut-chan{background:#27272a;padding:18px 40px;border-radius:50px;text-decoration:none;color:#ddd;font-size:20px;font-weight:500}
         .ban-quyen{font-size:22px;color:#666}
         .nut-len-top{display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:#27272a;border-radius:8px;color:#fff;font-size:24px;text-decoration:none;margin-top:20px;margin-left:auto}
-
-        /* ========== NHẠC NỀN ========== */
-        #nhacNen{display:none}
     </style>
 </head>
 <body>
-
-<!-- NHẠC NỀN TỰ ĐỘNG PHÁT -->
-<audio id="nhacNen" autoplay loop preload="auto" volume="0.5">
-    <source src="https://files.catbox.moe/9aa2yc.mp3" type="audio/mpeg">
-    Trình duyệt của bạn không hỗ trợ phát nhạc.
-
 
 <!-- ====================================== PHẦN 1 ====================================== -->
 <section class="phan-1">
@@ -73,7 +64,7 @@
     </div>
 
     <div class="avatar-khung">
-        <img src="https://i.postimg.cc/LXY4m0GD/D33D3E2D-A694-43C5-A5FD-F83CA31D2F5D.jpg" class="avatar" alt="FANG HAKI">
+        <img src="LINK_ANH_LOGO_CUA_BAN.png" class="avatar" alt="FANG HAKI">
     </div>
 
     <div style="text-align:center;">
@@ -107,7 +98,7 @@
 
     <div class="khung-sp">
         <div class="anh-sp-khung">
-            <img src="https://i.postimg.cc/LXY4m0GD/D33D3E2D-A694-43C5-A5FD-F83CA31D2F5D.jpg" alt="Giao diện Dracula">
+            <img src="LINK_ANH_SAN_PHAM.jpg" alt="Giao diện Dracula">
         </div>
 
         <div class="nhan-capnhat">✅ Đã Cập Nhật</div>
@@ -115,9 +106,9 @@
         <p class="mo-ta-sp">• Chơi Mod Skin Thì Bật Nhà Phát Triển Lên</p>
 
         <div class="nut-group">
-            <a href="LINK_LINK_TAI" class="https://i.postimg.cc/LXY4m0GD/D33D3E2D-A694-43C5-A5FD-F83CA31D2F5D.jpg">Link Trực Tiếp</a>
-            <a href="LINK_LAY_KEY" class="https://i.postimg.cc/LXY4m0GD/D33D3E2D-A694-43C5-A5FD-F83CA31D2F5D.jpg">Lấy Key</a>
-            <a href="https://i.postimg.cc/LXY4m0GD/D33D3E2D-A694-43C5-A5FD-F83CA31D2F5D.jpg" class="nut-sp nut-hong">Link IPA</a>
+            <a href="LINK_LINK_TAI" class="nut-sp nut-xanh">Link Trực Tiếp</a>
+            <a href="LINK_LAY_KEY" class="nut-sp nut-vang">Lấy Key</a>
+            <a href="LINK_IPA_FILE" class="nut-sp nut-hong">Link IPA</a>
         </div>
     </div>
 </section>
@@ -150,20 +141,6 @@ function capNhatGio() {
 }
 capNhatGio();
 setInterval(capNhatGio, 1000);
-
-// ========== NHẠC TỰ ĐỘNG PHÁT ==========
-const nhac = document.getElementById('nhacNen');
-document.addEventListener('DOMContentLoaded', function() {
-    nhac.volume = 0.5;
-    function thuPhatNhac() {
-        nhac.play().catch(function() {
-            document.addEventListener('click', function() {
-                nhac.play();
-            }, { once: true });
-        });
-    }
-    thuPhatNhac();
-});
 </script>
 
 </body>
