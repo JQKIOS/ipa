@@ -9,20 +9,8 @@
         *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
         body{background:#0a0a0f;color:#fff;line-height:1.6;padding-bottom:30px}
 
-        /* === HỘP THÔNG BÁO LẤY KEY - GIỐNG HÌNH BẠN GỬI === */
-        .hop-thong-bao{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:9999}
-        .hop-thong-bao.hien{display:flex}
-        .noi-dung-hop{background:#191922;border-radius:18px;padding:28px 22px;width:88%;max-width:400px;border:2px solid #a158e8;text-align:center}
-        .tieu-de-hop{font-size:30px;font-weight:800;margin-bottom:8px;letter-spacing:1px}
-        .loai-tb{color:#22d369;font-size:22px;font-weight:bold;margin-bottom:22px}
-        .noi-dung-tb{font-size:18px;line-height:1.8;color:#e0e0e0}
-        .nhom-nut-hop{display:flex;flex-direction:column;gap:14px;margin-top:28px}
-        .nut-hop{padding:15px;border-radius:12px;border:none;font-size:19px;font-weight:bold;cursor:pointer;width:100%}
-        .nut-tiep-tuc{background:linear-gradient(90deg,#3b9eff,#40a9ff);color:#fff}
-        .nut-huy{background:#444654;color:#bbbbbb}
-
-        /* === MÀN HÌNH CHÀO === */
-        .man-hinh-chao{position:fixed;inset:0;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:998;transition:0.4s}
+        /* === MÀN HÌNH CHÀO / TRANG ĐẦU === */
+        .man-hinh-chao{position:fixed;inset:0;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:999;transition:0.4s}
         .man-hinh-chao.dong{opacity:0;visibility:hidden}
         .hop-chao{background:#12121a;border-radius:20px;padding:30px 25px;width:90%;max-width:420px;border:2px solid transparent;background-image:linear-gradient(#12121a,#12121a),linear-gradient(90deg,#ff0080,#ff8c00,#00d4ff);background-origin:border-box;background-clip:padding-box,border-box;text-align:center}
         .logo-chao{width:90px;height:90px;border-radius:16px;margin:0 auto 15px;border:2px solid #222}
@@ -76,21 +64,6 @@
 <audio id="nhacNen" autoplay loop preload="auto" volume="0.6">
     <source src="LINK_FILE_NHAC.mp3" type="audio/mpeg">
 
-<!-- === HỘP THÔNG BÁO LẤY KEY ĐÚNG HÌNH === -->
-<div class="hop-thong-bao" id="hopThongBao">
-    <div class="noi-dung-hop">
-        <h2 class="tieu-de-hop">THÔNG BÁO</h2>
-        <div class="loai-tb">LẤY KEY</div>
-        <div class="noi-dung-tb">
-            Key Free 24h<br><br>
-            Hết Key Cứ Quay Lại Web Lấy
-        </div>
-        <div class="nhom-nut-hop">
-            <button class="nut-hop nut-tiep-tuc" id="nutTiepTuc">TIẾP TỤC</button>
-            <button class="nut-hop nut-huy" onclick="dongThongBao()">Hủy</button>
-        </div>
-    </div>
-</div>
 
 <!-- === MÀN HÌNH CHÀO === -->
 <div class="man-hinh-chao" id="manHinhChao">
@@ -126,8 +99,9 @@
         <a href="LINK_YOUTUBE" class="btn-nho yt">YouTube</a>
     </div>
 
-    <!-- SẢN PHẨM 1 -->
+    <!-- MỤC 1 -->
     <h2 class="tieu-de-muc">CÔNG CỤ FREE FIRE</h2>
+
     <div class="the-san-pham">
         <span class="nhan-cap-nhat">✅ Đã Cập Nhật Ob54</span>
         <img src="LINK_ANH_SP1" class="anh-sp" alt="Proxy Vip">
@@ -139,12 +113,12 @@
         </div>
         <div class="nhom-nut">
             <a href="LINK_TAI_TRUC_TIEP" class="nut-hanh-dong nut-xanh" download>Link Trực Tiếp</a>
-            <button class="nut-hanh-dong nut-vang" onclick="moThongBao('FH-9922-AA77-BN31')">Lấy Key</button>
+            <button class="nut-hanh-dong nut-vang" onclick="layKey('key1','FH-9922-AA77-BN31')">Lấy Key</button>
             <a href="LINK_IPA" class="nut-hanh-dong nut-tim">Link IPA</a>
         </div>
     </div>
 
-    <!-- SẢN PHẨM 2 -->
+    <!-- MỤC 2 -->
     <div class="the-san-pham">
         <span class="nhan-cap-nhat">✅ Đã Cập Nhật</span>
         <img src="LINK_ANH_SP2" class="anh-sp" alt="Mod Menu FF">
@@ -156,13 +130,14 @@
         </div>
         <div class="nhom-nut">
             <a href="LINK_TAI_TRUC_TIEP2" class="nut-hanh-dong nut-xanh" download>Link Trực Tiếp</a>
-            <button class="nut-hanh-dong nut-vang" onclick="moThongBao('FH-8811-ZZ55-CM29')">Lấy Key</button>
+            <button class="nut-hanh-dong nut-vang" onclick="layKey('key2','FH-8811-ZZ55-CM29')">Lấy Key</button>
             <a href="LINK_IPA2" class="nut-hanh-dong nut-tim">Link IPA</a>
         </div>
     </div>
 
-    <!-- KHO TỔNG HỢP -->
+    <!-- MỤC KHÁC -->
     <h2 class="tieu-de-muc">KHO TỔNG HỢP</h2>
+
     <div class="the-san-pham">
         <img src="LINK_ANH_TONGHOP" class="anh-sp" alt="Tổng hợp game">
         <div class="mo-ta-sp">
@@ -172,7 +147,7 @@
         </div>
         <div class="nhom-nut" style="grid-template-columns:1fr 1fr">
             <a href="LINK_TAT_CA" class="nut-hanh-dong nut-xanh">Link Tải Tất</a>
-            <button class="nut-hanh-dong nut-vang" onclick="moThongBao('FH-7700-WW44-DP18')">Lấy Key</button>
+            <button class="nut-hanh-dong nut-vang" onclick="layKey('key3','FH-7700-WW44-DP18')">Lấy Key</button>
         </div>
     </div>
 
@@ -189,39 +164,23 @@
         © 2026 FANG HAKI. Bảo lưu mọi quyền.<br>
         <small>Sử dụng theo đúng quy định</small>
     </div>
+
 </div>
 
 <script>
-// Nhạc tự động
+// Cấu hình nhạc tự động
 const nhac = document.getElementById('nhacNen');
 window.addEventListener('load', () => {
     nhac.volume = 0.6;
+    // Thử phát ngay khi tải trang
     nhac.play().catch(() => {
-        document.addEventListener('click', function autoPlayFix() {
+        // Nếu trình duyệt chặn, sẽ phát khi người dùng nhấn nút vào website
+        document.addEventListener('click', function phatNhacLanDau() {
             nhac.play();
-            document.removeEventListener('click', autoPlayFix);
+            document.removeEventListener('click', phatNhacLanDau);
         }, { once: true });
     });
 });
-
-let keyDangLay = '';
-
-// Mở thông báo khi bấm Lấy Key
-function moThongBao(maKey) {
-    keyDangLay = maKey;
-    document.getElementById('hopThongBao').classList.add('hien');
-    // Gán sự kiện cho nút tiếp tục
-    document.getElementById('nutTiepTuc').onclick = function() {
-        dongThongBao();
-        alert('🔑 Key: ' + keyDangLay + '\n✅ Đã sao chép!');
-        navigator.clipboard.writeText(keyDangLay || '');
-    };
-}
-
-// Đóng thông báo
-function dongThongBao() {
-    document.getElementById('hopThongBao').classList.remove('hien');
-}
 
 // Mở trang chính
 function moWeb(){
@@ -229,6 +188,12 @@ function moWeb(){
     setTimeout(()=>{
         document.getElementById('noiDungChinh').classList.add('hien');
     },300);
+}
+
+// Lấy Key
+function layKey(id,text){
+    alert('🔑 Key của bạn là: ' + text + '\n✅ Đã tự động sao chép!');
+    navigator.clipboard.writeText(text||'');
 }
 </script>
 </body>
