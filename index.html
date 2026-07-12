@@ -3,198 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FANG HAKI - Tải Game & Lấy Key</title>
-    <link rel="icon" href="LINK_ANH_LOGO" type="image/png">
+    <title>FANG HAKI</title>
     <style>
-        *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-        body{background:#0a0a0f;color:#fff;line-height:1.6;padding-bottom:30px}
+        *{margin:0;padding:0;box-sizing:border-box;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif}
+        body{line-height:1.4}
 
-        /* === MÀN HÌNH CHÀO / TRANG ĐẦU === */
-        .man-hinh-chao{position:fixed;inset:0;background:rgba(0,0,0,0.95);display:flex;align-items:center;justify-content:center;z-index:999;transition:0.4s}
-        .man-hinh-chao.dong{opacity:0;visibility:hidden}
-        .hop-chao{background:#12121a;border-radius:20px;padding:30px 25px;width:90%;max-width:420px;border:2px solid transparent;background-image:linear-gradient(#12121a,#12121a),linear-gradient(90deg,#ff0080,#ff8c00,#00d4ff);background-origin:border-box;background-clip:padding-box,border-box;text-align:center}
-        .logo-chao{width:90px;height:90px;border-radius:16px;margin:0 auto 15px;border:2px solid #222}
-        .ten-chao{font-size:32px;font-weight:bold;background:linear-gradient(90deg,#ff0080,#ff8c00,#00d4ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
-        .mo-ta-chao{color:#88cfff;margin-bottom:25px;font-size:16px}
-        .btn-chao{display:block;width:100%;padding:14px;border-radius:12px;margin-bottom:12px;border:none;font-size:17px;font-weight:bold;cursor:pointer;text-decoration:none;color:#fff}
-        .btn-tg{background:linear-gradient(90deg,#0099ff,#00c3ff)}
-        .btn-tt{background:linear-gradient(90deg,#000,#25f4ee);color:#fff}
-        .btn-yt{background:linear-gradient(90deg,#ff0000,#ff3333)}
-        .btn-web{background:linear-gradient(90deg,#882bfd,#2bb8ff);margin-top:10px}
-        .trang-thai{margin-top:20px;color:#4ade80;font-size:15px}
-        .trang-thai span::before{content:'🟢 '}
+        /* ========== PHẦN 1 - TRANG ĐẦU ========== */
+        .phan-1{min-height:100vh;padding:24px 20px;background:linear-gradient(180deg,#f5f7fa 0%,#e9ecef 100%);position:relative}
+        .thoi-gian{display:inline-flex;align-items:center;gap:6px;background:#fff;border:2px solid #ffb74d;padding:10px 22px;border-radius:30px;font-size:18px;font-weight:500;color:#333;box-shadow:0 2px 6px rgba(255,152,0,0.1)}
+        .menu-btn{position:absolute;top:24px;right:20px;width:48px;height:48px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
+        .avatar-khung{text-align:center;margin-top:80px;margin-bottom:24px}
+        .avatar{width:140px;height:140px;border-radius:50%;border:3px solid #c9cdd4;background:#ddd;display:inline-flex;align-items:center;justify-content:center;font-size:70px;color:#777}
+        .ten-nho{display:inline-block;background:#dee2e6;padding:8px 24px;border-radius:20px;font-size:17px;color:#495057;margin-bottom:16px}
+        .chao-txt{text-align:center;font-size:22px;color:#495057;margin-bottom:8px}
+        .ten-lon{text-align:center;font-size:44px;font-weight:800;margin-bottom:12px}
+        .dau-tich-xanh{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:#3b82f6;border-radius:50%;color:#fff;font-size:20px;margin-left:8px;vertical-align:middle}
+        .huong-dan-txt{text-align:center;font-size:24px;color:#6c757d;margin-bottom:45px}
+        .thong-ke-khung{display:flex;justify-content:space-around;align-items:center;gap:10px;background:#fff;padding:28px 20px;border-radius:24px;max-width:500px;margin:0 auto;box-shadow:0 4px 20px rgba(0,0,0,0.04)}
+        .cot-tk{text-align:center;flex:1}
+        .so-tk{font-size:42px;font-weight:700;color:#ced4da;margin-bottom:6px}
+        .chu-tk{font-size:18px;color:#495057}
+        .ngang-ke{width:1px;height:40px;background:#e9ecef}
 
-        /* === NỘI DUNG CHÍNH === */
-        .noi-dung-chinh{display:none;padding:20px;max-width:550px;margin:0 auto}
-        .noi-dung-chinh.hien{display:block}
-        .dau-trang{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:15px;border-bottom:1px solid #222}
-        .logo-nho{width:50px;height:50px;border-radius:10px}
-        .ten-nhan h2{font-size:22px;background:linear-gradient(90deg,#39ff14,#00ffff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-        .ten-nhan p{color:#aaa;font-size:14px}
-        .lien-he-ngang{display:flex;gap:8px;margin-bottom:30px}
-        .btn-nho{flex:1;padding:8px;border-radius:8px;text-decoration:none;color:#fff;text-align:center;font-weight:bold;font-size:15px}
-        .btn-nho.tg{background:#0099ff}
-        .btn-nho.tt{background:linear-gradient(90deg,#000,#25f4ee)}
-        .btn-nho.yt{background:#ff0000}
+        /* ========== PHẦN 2 - SẢN PHẨM ========== */
+        .phan-2{background:#000;padding:40px 20px}
+        .tieu-de-phan2{font-size:34px;font-weight:800;margin-bottom:24px;background:linear-gradient(90deg,#ff4081,#00e5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .khung-sp{background:#111;border-radius:22px;padding:18px;border:1px solid #222;max-width:500px;margin:0 auto}
+        .anh-sp-khung{width:100%;height:240px;border-radius:14px;margin-bottom:20px;background:#222;display:flex;align-items:center;justify-content:center;color:#888;font-size:20px;gap:8px}
+        .nhan-capnhat{display:inline-flex;align-items:center;gap:8px;background:#15803d;color:#fff;padding:10px 22px;border-radius:30px;font-size:17px;margin-bottom:16px}
+        .ten-sp{font-size:26px;font-weight:bold;margin-bottom:12px;color:#fff}
+        .mo-ta-sp{color:#aaa;margin-bottom:24px;font-size:18px;line-height:1.6}
+        .nut-group{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:center}
+        .nut-group.ba-nut{grid-template-columns:1fr 1fr 1fr}
+        .nut-sp{padding:18px 10px;border-radius:16px;text-align:center;text-decoration:none;color:#fff;font-weight:bold;font-size:20px;border:none;cursor:pointer;white-space:nowrap}
+        .nut-xanh{background:linear-gradient(135deg,#2196f3,#42a5f5)}
+        .nut-vang{background:linear-gradient(135deg,#ffc107,#ffca28);color:#111}
+        .nut-hong{background:linear-gradient(135deg,#ec407a,#d81b60)}
 
-        /* === TIÊU ĐỀ MỤC === */
-        .tieu-de-muc{font-size:24px;font-weight:bold;margin:25px 0 15px;background:linear-gradient(90deg,#ff00ff,#00ffff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;border-left:3px solid #ff00ff;padding-left:8px}
+        /* ========== PHẦN 3 - CHÂN TRANG ========== */
+        .phan-3{background:#000;padding:50px 20px 40px;text-align:center;border-top:1px solid #222;max-width:100%}
+        .ten-chan{font-size:48px;font-weight:800;background:linear-gradient(90deg,#81ff81,#00e5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+        .mo-ta-chan{font-size:24px;color:#888;margin-bottom:16px}
+        .tieuchi-chan{font-size:32px;font-weight:bold;margin-bottom:32px;letter-spacing:1px;background:linear-gradient(90deg,#d4ff33,#76ff03);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .nut-chan-wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;margin-bottom:30px}
+        .nut-chan{background:#27272a;padding:18px 40px;border-radius:50px;text-decoration:none;color:#ddd;font-size:20px;font-weight:500}
+        .ban-quyen{font-size:22px;color:#666}
+        .nut-len-top{display:flex;align-items:center;justify-content:center;width:52px;height:52px;background:#27272a;border-radius:8px;color:#fff;font-size:24px;text-decoration:none;margin-top:20px;margin-left:auto}
 
-        /* === THẺ SẢN PHẨM === */
-        .the-san-pham{background:#111;border-radius:12px;padding:12px;margin-bottom:20px;border:1px solid #222}
-        .anh-sp{width:100%;border-radius:8px;margin-bottom:12px}
-        .nhan-cap-nhat{display:inline-block;background:#16a34a;color:#fff;padding:3px 10px;border-radius:20px;font-size:13px;margin-bottom:8px}
-        .ten-sp{font-size:20px;font-weight:bold;margin-bottom:8px}
-        .mo-ta-sp{color:#aaa;margin-bottom:15px;padding-left:5px;border-left:2px solid #333}
-        .nhom-nut{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-        .nut-hanh-dong{padding:10px;border-radius:8px;text-decoration:none;text-align:center;color:#fff;font-weight:bold;border:none;cursor:pointer;font-size:15px}
-        .nut-xanh{background:linear-gradient(135deg,#0099ff,#00cfff)}
-        .nut-vang{background:linear-gradient(135deg,#ffcc00,#ffdd33);color:#111}
-        .nut-tim{background:linear-gradient(135deg,#d946ef,#ec4899)}
-
-        /* === CHÂN TRANG === */
-        .cuoi-trang{text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #222;color:#666;font-size:14px}
-        .lien-he-cuoi{display:flex;justify-content:center;gap:15px;margin:10px 0}
-        .lien-he-cuoi a{background:#222;padding:6px 14px;border-radius:6px;color:#ddd;text-decoration:none}
+        /* ========== HỘP THÔNG BÁO LẤY KEY ========== */
+        .hop-popup{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:999}
+        .hop-popup.hien{display:flex}
+        .hop-noi-dung{background:#181822;border-radius:18px;padding:30px 24px;width:90%;max-width:400px;border:2px solid #a855f7;text-align:center}
+        .hop-tieude{font-size:30px;font-weight:800;margin-bottom:8px;color:#fff}
+        .hop-loai{color:#22d369;font-size:22px;font-weight:bold;margin-bottom:20px}
+        .hop-noidung{font-size:18px;line-height:1.8;color:#ddd}
+        .hop-nut{display:flex;flex-direction:column;gap:14px;margin-top:25px}
+        .btn-hop{padding:15px;border-radius:12px;border:none;font-size:19px;font-weight:bold;cursor:pointer}
+        .btn-xanh{background:linear-gradient(90deg,#3b9eff,#40a9ff);color:#fff}
+        .btn-xam{background:#444654;color:#bbb}
     </style>
 </head>
 <body>
 
-<!-- === NHẠC NỀN TỰ ĐỘNG === -->
-<audio id="nhacNen" autoplay loop preload="auto" volume="0.6">
-    <source src="LINK_FILE_NHAC.mp3" type="audio/mpeg">
-
-
-<!-- === MÀN HÌNH CHÀO === -->
-<div class="man-hinh-chao" id="manHinhChao">
-    <div class="hop-chao">
-        <img src="LINK_ANH_LOGO" class="logo-chao" alt="Logo FANG HAKI">
-        <h1 class="ten-chao">FANG HAKI</h1>
-        <p class="mo-ta-chao">Tham Gia Nhóm Để Nhận Cập Nhật Mới Nhất</p>
-
-        <a href="LINK_TELEGRAM" target="_blank" class="btn-chao btn-tg">➤ Telegram</a>
-        <a href="LINK_TIKTOK" target="_blank" class="btn-chao btn-tt">🎵 TikTok</a>
-        <a href="LINK_YOUTUBE" target="_blank" class="btn-chao btn-yt">▶ YouTube</a>
-
-        <button class="btn-chao btn-web" onclick="moWeb()">🚀 Vào Website</button>
-
-        <div class="trang-thai"><span>Web Đang Hoạt Động</span><br><small style="color:#fbbf24">Cập Nhật Liên Tục</small></div>
+<!-- Hộp thông báo lấy key -->
+<div class="hop-popup" id="hopBao">
+    <div class="hop-noi-dung">
+        <h2 class="hop-tieude">THÔNG BÁO</h2>
+        <div class="hop-loai">LẤY KEY</div>
+        <div class="hop-noidung">
+            Key Free 24h<br><br>
+            Hết Key Cứ Quay Lại Web Lấy
+        </div>
+        <div class="hop-nut">
+            <button class="btn-hop btn-xanh" id="nutTiep">TIẾP TỤC</button>
+            <button class="btn-hop btn-xam" onclick="dongHop()">Hủy</button>
+        </div>
     </div>
 </div>
 
-<!-- === NỘI DUNG CHÍNH === -->
-<div class="noi-dung-chinh" id="noiDungChinh">
-    <div class="dau-trang">
-        <img src="LINK_ANH_LOGO" class="logo-nho" alt="">
-        <div class="ten-nhan">
-            <h2>FANG HAKI</h2>
-            <p>Kho Công Cụ & Game iOS - Android</p>
-            <p style="color:#58a6ff;font-size:13px">Tải Miễn Phí - Lấy Key Hàng Ngày</p>
-        </div>
+
+<!-- ======================================
+            PHẦN 1 - TRANG ĐẦU
+====================================== -->
+<section class="phan-1">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div class="thoi-gian">13:53:46 ☀️</div>
+        <div class="menu-btn">☰</div>
     </div>
 
-    <div class="lien-he-ngang">
-        <a href="LINK_TELEGRAM" class="btn-nho tg">Telegram</a>
-        <a href="LINK_TIKTOK" class="btn-nho tt">TikTok</a>
-        <a href="LINK_YOUTUBE" class="btn-nho yt">YouTube</a>
+    <div class="avatar-khung">
+        <div class="avatar">👤</div>
     </div>
 
-    <!-- MỤC 1 -->
-    <h2 class="tieu-de-muc">CÔNG CỤ FREE FIRE</h2>
-
-    <div class="the-san-pham">
-        <span class="nhan-cap-nhat">✅ Đã Cập Nhật Ob54</span>
-        <img src="LINK_ANH_SP1" class="anh-sp" alt="Proxy Vip">
-        <h3 class="ten-sp">Proxy Vip Antiban</h3>
-        <div class="mo-ta-sp">
-            • Chống phát hiện cao cấp<br>
-            • Tối ưu tốc độ đường truyền<br>
-            • Hỗ trợ mọi thiết bị iOS / Android
-        </div>
-        <div class="nhom-nut">
-            <a href="LINK_TAI_TRUC_TIEP" class="nut-hanh-dong nut-xanh" download>Link Trực Tiếp</a>
-            <button class="nut-hanh-dong nut-vang" onclick="layKey('key1','FH-9922-AA77-BN31')">Lấy Key</button>
-            <a href="LINK_IPA" class="nut-hanh-dong nut-tim">Link IPA</a>
-        </div>
+    <div style="text-align:center;">
+        <div class="ten-nho">FANG HAKI</div>
+        <p class="chao-txt">Hi, I am</p>
+        <h1 class="ten-lon">FANG HAKI <span class="dau-tich-xanh">✓</span></h1>
+        <p class="huong-dan-txt">Scroll down to explore 👇</p>
     </div>
 
-    <!-- MỤC 2 -->
-    <div class="the-san-pham">
-        <span class="nhan-cap-nhat">✅ Đã Cập Nhật</span>
-        <img src="LINK_ANH_SP2" class="anh-sp" alt="Mod Menu FF">
-        <h3 class="ten-sp">Mod Menu FF Full Tính Năng</h3>
-        <div class="mo-ta-sp">
-            • ESP - Vị trí - Khoảng cách<br>
-            • Tự ngắm - Bắn đầu - Tốc độ đạn<br>
-            • Không cần cấu hình phức tạp
+    <div class="thong-ke-khung">
+        <div class="cot-tk">
+            <div class="so-tk">500M+</div>
+            <div class="chu-tk">Lượt tải</div>
         </div>
-        <div class="nhom-nut">
-            <a href="LINK_TAI_TRUC_TIEP2" class="nut-hanh-dong nut-xanh" download>Link Trực Tiếp</a>
-            <button class="nut-hanh-dong nut-vang" onclick="layKey('key2','FH-8811-ZZ55-CM29')">Lấy Key</button>
-            <a href="LINK_IPA2" class="nut-hanh-dong nut-tim">Link IPA</a>
+        <div class="ngang-ke"></div>
+        <div class="cot-tk">
+            <div class="so-tk">2026</div>
+            <div class="chu-tk">Cập nhật</div>
         </div>
-    </div>
-
-    <!-- MỤC KHÁC -->
-    <h2 class="tieu-de-muc">KHO TỔNG HỢP</h2>
-
-    <div class="the-san-pham">
-        <img src="LINK_ANH_TONGHOP" class="anh-sp" alt="Tổng hợp game">
-        <div class="mo-ta-sp">
-            • Tổng hợp hơn 500+ công cụ, game hay<br>
-            • Cập nhật phiên bản mới hàng ngày<br>
-            • Hướng dẫn cài đặt đầy đủ cho từng nền tảng
-        </div>
-        <div class="nhom-nut" style="grid-template-columns:1fr 1fr">
-            <a href="LINK_TAT_CA" class="nut-hanh-dong nut-xanh">Link Tải Tất</a>
-            <button class="nut-hanh-dong nut-vang" onclick="layKey('key3','FH-7700-WW44-DP18')">Lấy Key</button>
+        <div class="ngang-ke"></div>
+        <div class="cot-tk">
+            <div class="so-tk">#1</div>
+            <div class="chu-tk">iOS</div>
         </div>
     </div>
+</section>
 
-    <div style="text-align:center;margin:30px 0;color:#fbbf24;font-size:18px;font-weight:bold">
-        🔥 VIP • AN TOÀN • CHỐNG KHOÁ 🔥
-    </div>
+<!-- ======================================
+            PHẦN 2 - SẢN PHẨM
+====================================== -->
+<section class="phan-2">
+    <h2 class="tieu-de-phan2">HACK PUBG iOS</h2>
 
-    <div class="cuoi-trang">
-        <div class="lien-he-cuoi">
-            <a href="LINK_TELEGRAM">Telegram</a>
-            <a href="LINK_TIKTOK">TikTok</a>
-            <a href="LINK_YOUTUBE">YouTube</a>
+    <div class="khung-sp">
+        <div class="anh-sp-khung">🖼️ Ảnh giao diện</div>
+
+        <div class="nhan-capnhat">✅ Đã Cập Nhật</div>
+        <h3 class="ten-sp">Hack Dracula Pro 4.5</h3>
+        <p class="mo-ta-sp">• Chơi Mod Skin Thì Bật Nhà Phát Triển Lên</p>
+
+        <div class="nut-group ba-nut">
+            <a href="#" class="nut-sp nut-xanh">Link Trực Tiếp</a>
+            <button class="nut-sp nut-vang" onclick="moHop('FH-9922-AA77-BN31')">Lấy Key</button>
+            <a href="#" class="nut-sp nut-hong">Link IPA</a>
         </div>
-        © 2026 FANG HAKI. Bảo lưu mọi quyền.<br>
-        <small>Sử dụng theo đúng quy định</small>
+    </div>
+</section>
+
+<!-- ======================================
+            PHẦN 3 - CHÂN TRANG
+====================================== -->
+<section class="phan-3">
+    <h2 class="ten-chan">FANG HAKI</h2>
+    <p class="mo-ta-chan">Kho Game iOS & Android</p>
+    <p class="tieuchi-chan">🔥 ViP • Safe • Antiban 🔥</p>
+
+    <div class="nut-chan-wrap">
+        <a href="#" class="nut-chan">Telegram</a>
+        <a href="#" class="nut-chan">TikTok</a>
+        <a href="#" class="nut-chan">YouTube</a>
     </div>
 
-</div>
+    <p class="ban-quyen">© 2026 FANG HAKI</p>
+    <a href="#" class="nut-len-top">↑</a>
+</section>
+
 
 <script>
-// Cấu hình nhạc tự động
-const nhac = document.getElementById('nhacNen');
-window.addEventListener('load', () => {
-    nhac.volume = 0.6;
-    // Thử phát ngay khi tải trang
-    nhac.play().catch(() => {
-        // Nếu trình duyệt chặn, sẽ phát khi người dùng nhấn nút vào website
-        document.addEventListener('click', function phatNhacLanDau() {
-            nhac.play();
-            document.removeEventListener('click', phatNhacLanDau);
-        }, { once: true });
-    });
-});
-
-// Mở trang chính
-function moWeb(){
-    document.getElementById('manHinhChao').classList.add('dong');
-    setTimeout(()=>{
-        document.getElementById('noiDungChinh').classList.add('hien');
-    },300);
+let keyDung = '';
+function moHop(k) {
+    keyDung = k;
+    document.getElementById('hopBao').classList.add('hien');
+    document.getElementById('nutTiep').onclick = function() {
+        dongHop();
+        alert('🔑 Key: ' + keyDung + '\n✅ Đã sao chép!');
+        navigator.clipboard && navigator.clipboard.writeText(keyDung);
+    }
 }
-
-// Lấy Key
-function layKey(id,text){
-    alert('🔑 Key của bạn là: ' + text + '\n✅ Đã tự động sao chép!');
-    navigator.clipboard.writeText(text||'');
+function dongHop() {
+    document.getElementById('hopBao').classList.remove('hien');
 }
 </script>
+
 </body>
 </html>
